@@ -31,7 +31,7 @@ pipeline {
             chmod a+x ./twistcli
             # docker build -t test1 .
             docker images
-            ./twistcli sandbox  --address "$CONSOLE" --user "$USER"  --password "$PASS" --analysis-duration 2m   webserver
+            ./twistcli sandbox  --address "$CONSOLE" --user "$USER"  --password "$PASS" --analysis-duration 2m  -v "$PWD":/ webserver
             docker images 
             '''
       }
