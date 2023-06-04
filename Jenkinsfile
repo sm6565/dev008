@@ -15,9 +15,11 @@ pipeline {
             }
         }
         stage('Build') {
-            steps {
-                echo 'Building..'
-                echo 'Running docker build -t sntshk/cotu .'
+            steps {  withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
+                 script{
+                 app =  docker.build("webserver")
+                 }
+               }
             }
         }
         stage('Publish') {
